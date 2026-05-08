@@ -5,31 +5,43 @@ provider: vLLM
 providerId: vllm
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
-- AI
 - LLM
 - Inference
 - Open Source
-- Performance
+- GPU
+- OpenAI Compatible
+- Self-Hosted
 - Rate Limiting
 - Quotas
 - Throttling
-description: Placeholder rate-limit artifact for vLLM. Replace with real limits once researched.
-notes: Initial scaffold — limits have not yet been reconciled.
+description: >-
+  vLLM does not impose project-level API rate limits. Throughput is bounded by GPU memory, model size,
+  batch settings (--max-num-seqs, --max-model-len), and tensor/pipeline parallelism. Optionally, set
+  --api-key to require auth and put a reverse proxy (Nginx, Envoy) in front to enforce per-client
+  throttles.
+notes: No built-in rate limits; throughput is GPU-bound.
 sources:
-- https://docs.vllm.ai/
+- https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html
 responseCodes:
   throttled: 429
 limits:
-- name: Default
-  scope: account
-  metric: varies
-  limit: see provider documentation
-  notes: Pending reconciliation.
+- name: Project-level
+  scope: n/a
+  metric: n/a
+  limit: no built-in cap
+  notes: Throughput is bounded by GPU and batching.
+- name: Per-deployment (operator-set)
+  scope: deployment
+  metric: concurrent-requests
+  limit: configured via --max-num-seqs
+  notes: Operator tunes max concurrency at server start.
 policies:
-- name: Backoff Strategy
-  description: Clients should implement exponential backoff with jitter and honor any Retry-After header.
+- name: Reverse-Proxy Throttling
+  description: Front vLLM with Nginx/Envoy to enforce per-API-key or per-IP rate limits.
+- name: Batch Tuning
+  description: Tune --max-num-seqs, --max-model-len, and tensor parallelism for throughput vs. latency trade-offs.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

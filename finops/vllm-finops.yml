@@ -5,18 +5,23 @@ provider: vLLM
 providerId: vllm
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
-- AI
 - LLM
 - Inference
 - Open Source
-- Performance
+- GPU
+- OpenAI Compatible
+- Self-Hosted
 - FinOps
 - Cost Management
 - FOCUS
-description: FOCUS-aligned FinOps placeholder for vLLM. Pipeline will replace with real billing details.
-notes: Initial scaffold — billing model has not yet been reconciled.
+description: >-
+  FOCUS-aligned FinOps profile for vLLM. The software is free. Cost is GPU compute and storage on your
+  chosen platform (cloud spot/on-demand GPUs, on-prem hardware, or a managed-vLLM provider). Optimize
+  via continuous batching (default in vLLM), prefix caching, paged-attention sizing, model
+  quantization (AWQ/GPTQ/INT8/FP8), and routing across instance sizes.
+notes: Cost is GPU infra; vLLM provides batching/quantization levers to reduce $/token.
 sources:
 - https://docs.vllm.ai/
 - https://focus.finops.org/focus-specification/v1-3/
@@ -26,41 +31,45 @@ alignedWith:
   dataSpec: FOCUS
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
-publisherName: vLLM
-serviceCategory: AI
+publisherName: vLLM Project
+serviceCategory: LLM Inference
 billingModel:
-  pricingCategory: To Be Reconciled
-  billingFrequency: Monthly
+  pricingCategory: Free OSS / Compute
+  billingFrequency: N/A (project) / Hourly (infra)
   billingCurrency: USD
   chargeCategories:
   - Usage
-  - Purchase
-  - Adjustment
 focusColumns:
   ServiceName: vLLM
-  ServiceCategory: AI
-  ProviderName: vLLM
-  PublisherName: vLLM
-  InvoiceIssuerName: vLLM
+  ServiceCategory: LLM Inference
+  ProviderName: vLLM Project
+  PublisherName: vLLM Project
+  InvoiceIssuerName: N/A
   BillingCurrency: USD
   ChargeCategory: Usage
 meters:
-- name: api_usage
-  description: Catch-all meter pending reconciliation.
-  unit: varies
+- name: gpu_hours
+  description: GPU hours consumed by vLLM serving processes.
+  unit: hour
   aggregation: sum
   dimensions:
-  - account
-  - resource
+  - gpu_type
+  - model
+- name: tokens_served
+  description: Output tokens generated (operational meter for $/token tracking).
+  unit: token
+  aggregation: sum
+  dimensions:
+  - model
 principles:
 - name: Visibility
-  description: Pull provider invoices or usage exports until a self-serve usage feed is documented.
+  description: Pull GPU utilization and tokens-served metrics; compute effective $/1k tokens.
 - name: Allocation
-  description: Tag invoice line items to consuming business units in your FinOps store.
+  description: Allocate GPU hours to consuming AI features/teams.
 - name: Optimization
-  description: Levers depend on the provider's billing model; review at renewal once reconciled.
+  description: Use continuous batching, prefix caching, and quantization; right-size GPUs per workload.
 - name: Accountability
-  description: Assign a contract owner to review billing against negotiated terms.
+  description: Infra/ML platform team owns vLLM deployment and GPU spend.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
