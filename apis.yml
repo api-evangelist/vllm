@@ -1,7 +1,7 @@
 aid: vllm
 url: https://raw.githubusercontent.com/api-evangelist/vllm/refs/heads/main/apis.yml
 name: vLLM
-x-type: company
+kind: company
 description: >-
   vLLM is a high-throughput, memory-efficient open-source inference and serving engine for LLMs. It
   provides an OpenAI-compatible REST server (vllm serve) plus a Python API. vLLM is Apache 2.0 and run
