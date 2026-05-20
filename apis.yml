@@ -43,6 +43,8 @@ apis:
       - type: OpenAICompat
         url: https://platform.openai.com/docs/api-reference
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/vllm-project
   - type: Website
     url: https://docs.vllm.ai/
   - type: DeveloperPortal
