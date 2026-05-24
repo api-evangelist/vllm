@@ -1,0 +1,259 @@
+openapi: 3.1.0
+info:
+  title: vLLM OpenAI-Compatible Server
+  version: '1'
+  description: |
+    vLLM is a high-throughput open-source inference and serving engine for
+    LLMs. Running `vllm serve` exposes an OpenAI-compatible REST API plus
+    vLLM-specific endpoints. Authentication is via a server-startup
+    `--api-key` flag; clients supply it as a Bearer token in the
+    Authorization header (matching the OpenAI Python client).
+  contact:
+    name: vLLM Documentation
+    url: https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+  - url: http://{host}:{port}
+    description: Local vLLM server
+    variables:
+      host:
+        default: localhost
+      port:
+        default: '8000'
+tags:
+  - name: Chat
+    description: OpenAI-compatible chat completions
+  - name: Completions
+    description: OpenAI-compatible text completions
+  - name: Embeddings
+    description: OpenAI-compatible embeddings
+  - name: Audio
+    description: OpenAI-compatible audio endpoints
+  - name: Tokenize
+    description: vLLM-specific tokenize/detokenize utilities
+  - name: Scoring
+    description: vLLM-specific scoring and reranking endpoints
+paths:
+  /v1/chat/completions:
+    post:
+      tags: [Chat]
+      summary: Create a chat completion
+      operationId: createChatCompletion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatCompletionRequest'
+      responses:
+        '200':
+          description: Chat completion response
+  /v1/completions:
+    post:
+      tags: [Completions]
+      summary: Create a text completion
+      operationId: createCompletion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompletionRequest'
+      responses:
+        '200':
+          description: Completion response
+  /v1/embeddings:
+    post:
+      tags: [Embeddings]
+      summary: Create embeddings
+      operationId: createEmbedding
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmbeddingRequest'
+      responses:
+        '200':
+          description: Embedding response
+  /v1/audio/transcriptions:
+    post:
+      tags: [Audio]
+      summary: Transcribe audio
+      operationId: transcribeAudio
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                model:
+                  type: string
+      responses:
+        '200':
+          description: Transcription
+  /v1/audio/translations:
+    post:
+      tags: [Audio]
+      summary: Translate audio to English
+      operationId: translateAudio
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                model:
+                  type: string
+      responses:
+        '200':
+          description: Translation
+  /v1/score:
+    post:
+      tags: [Scoring]
+      summary: Score with a cross-encoder model
+      operationId: score
+      responses:
+        '200':
+          description: Score
+  /v1/rerank:
+    post:
+      tags: [Scoring]
+      summary: Rerank results
+      operationId: rerank
+      responses:
+        '200':
+          description: Rerank results
+  /classify:
+    post:
+      tags: [Scoring]
+      summary: Classify input
+      operationId: classify
+      responses:
+        '200':
+          description: Classification
+  /pooling:
+    post:
+      tags: [Scoring]
+      summary: Pooling operation
+      operationId: pooling
+      responses:
+        '200':
+          description: Pooling result
+  /generative_scoring:
+    post:
+      tags: [Scoring]
+      summary: Score items using a generative model
+      operationId: generativeScoring
+      responses:
+        '200':
+          description: Scoring result
+  /tokenize:
+    post:
+      tags: [Tokenize]
+      summary: Encode text to tokens
+      operationId: tokenize
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model:
+                  type: string
+                prompt:
+                  type: string
+      responses:
+        '200':
+          description: Token IDs
+  /detokenize:
+    post:
+      tags: [Tokenize]
+      summary: Decode tokens to text
+      operationId: detokenize
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model:
+                  type: string
+                tokens:
+                  type: array
+                  items:
+                    type: integer
+      responses:
+        '200':
+          description: Decoded text
+components:
+  schemas:
+    ChatCompletionRequest:
+      type: object
+      required: [model, messages]
+      properties:
+        model:
+          type: string
+        messages:
+          type: array
+          items:
+            type: object
+            properties:
+              role:
+                type: string
+                enum: [system, user, assistant, tool]
+              content:
+                type: string
+        stream:
+          type: boolean
+        temperature:
+          type: number
+        max_tokens:
+          type: integer
+    CompletionRequest:
+      type: object
+      required: [model, prompt]
+      properties:
+        model:
+          type: string
+        prompt:
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+        stream:
+          type: boolean
+        max_tokens:
+          type: integer
+    EmbeddingRequest:
+      type: object
+      required: [model, input]
+      properties:
+        model:
+          type: string
+        input:
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API key supplied at server startup via --api-key
+security:
+  - bearerAuth: []
