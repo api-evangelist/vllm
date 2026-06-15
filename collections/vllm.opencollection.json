@@ -1,0 +1,246 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "vLLM OpenAI-Compatible Server",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Chat",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a chat completion",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/v1/chat/completions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a chat completion"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Completions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a text completion",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/v1/completions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a text completion"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Embeddings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create embeddings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/v1/embeddings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create embeddings"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Audio",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Transcribe audio",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/v1/audio/transcriptions",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "model",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Transcribe audio"
+        },
+        {
+          "info": {
+            "name": "Translate audio to English",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/v1/audio/translations",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "model",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Translate audio to English"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Scoring",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Score with a cross-encoder model",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/v1/score"
+          },
+          "docs": "Score with a cross-encoder model"
+        },
+        {
+          "info": {
+            "name": "Rerank results",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/v1/rerank"
+          },
+          "docs": "Rerank results"
+        },
+        {
+          "info": {
+            "name": "Classify input",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/classify"
+          },
+          "docs": "Classify input"
+        },
+        {
+          "info": {
+            "name": "Pooling operation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/pooling"
+          },
+          "docs": "Pooling operation"
+        },
+        {
+          "info": {
+            "name": "Score items using a generative model",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/generative_scoring"
+          },
+          "docs": "Score items using a generative model"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tokenize",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Encode text to tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/tokenize",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Encode text to tokens"
+        },
+        {
+          "info": {
+            "name": "Decode tokens to text",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/detokenize",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Decode tokens to text"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
