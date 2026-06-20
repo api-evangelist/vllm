@@ -6,7 +6,7 @@ description: >-
   vLLM is a high-throughput, memory-efficient open-source inference and serving engine for LLMs. It
   provides an OpenAI-compatible REST server (vllm serve) plus a Python API. vLLM is Apache 2.0 and run
   on your own GPU infrastructure; there is no hosted vLLM SaaS from the project itself.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - LLM
   - Inference
