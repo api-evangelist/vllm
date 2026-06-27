@@ -57,7 +57,7 @@ common:
     url: rate-limits/vllm-rate-limits.yml
   - type: FinOps
     url: finops/vllm-finops.yml
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://vllm.ai/llms.txt
 maintainers:
   - FN: Kin Lane
