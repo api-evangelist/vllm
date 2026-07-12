@@ -43,6 +43,10 @@ apis:
       - type: OpenAICompat
         url: https://platform.openai.com/docs/api-reference
 common:
+  - type: DomainSecurity
+    url: security/vllm-domain-security.yml
+  - type: Authentication
+    url: authentication/vllm-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/vllm-project
   - type: Website
@@ -59,6 +63,8 @@ common:
     url: finops/vllm-finops.yml
   - type: LlmsText
     url: https://vllm.ai/llms.txt
+  - url: https://vllm.ai/blog/rss.xml
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
