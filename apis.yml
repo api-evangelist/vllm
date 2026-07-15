@@ -43,6 +43,8 @@ apis:
       - type: OpenAICompat
         url: https://platform.openai.com/docs/api-reference
 common:
+  - type: AgenticAccess
+    url: agentic-access/vllm-agentic-access.yml
   - type: DomainSecurity
     url: security/vllm-domain-security.yml
   - type: Authentication
