@@ -1,0 +1,83 @@
+openapi: 3.1.0
+info:
+  title: vLLM OpenAI-Compatible Server Audio API
+  version: '1'
+  description: 'vLLM is a high-throughput open-source inference and serving engine for
+
+    LLMs. Running `vllm serve` exposes an OpenAI-compatible REST API plus
+
+    vLLM-specific endpoints. Authentication is via a server-startup
+
+    `--api-key` flag; clients supply it as a Bearer token in the
+
+    Authorization header (matching the OpenAI Python client).
+
+    '
+  contact:
+    name: vLLM Documentation
+    url: https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://{host}:{port}
+  description: Local vLLM server
+  variables:
+    host:
+      default: localhost
+    port:
+      default: '8000'
+security:
+- bearerAuth: []
+tags:
+- name: Audio
+  description: OpenAI-compatible audio endpoints
+paths:
+  /v1/audio/transcriptions:
+    post:
+      tags:
+      - Audio
+      summary: Transcribe audio
+      operationId: transcribeAudio
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                model:
+                  type: string
+      responses:
+        '200':
+          description: Transcription
+  /v1/audio/translations:
+    post:
+      tags:
+      - Audio
+      summary: Translate audio to English
+      operationId: translateAudio
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                model:
+                  type: string
+      responses:
+        '200':
+          description: Translation
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API key supplied at server startup via --api-key

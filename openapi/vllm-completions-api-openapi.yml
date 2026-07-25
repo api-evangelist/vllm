@@ -1,0 +1,75 @@
+openapi: 3.1.0
+info:
+  title: vLLM OpenAI-Compatible Server Audio Completions API
+  version: '1'
+  description: 'vLLM is a high-throughput open-source inference and serving engine for
+
+    LLMs. Running `vllm serve` exposes an OpenAI-compatible REST API plus
+
+    vLLM-specific endpoints. Authentication is via a server-startup
+
+    `--api-key` flag; clients supply it as a Bearer token in the
+
+    Authorization header (matching the OpenAI Python client).
+
+    '
+  contact:
+    name: vLLM Documentation
+    url: https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://{host}:{port}
+  description: Local vLLM server
+  variables:
+    host:
+      default: localhost
+    port:
+      default: '8000'
+security:
+- bearerAuth: []
+tags:
+- name: Completions
+  description: OpenAI-compatible text completions
+paths:
+  /v1/completions:
+    post:
+      tags:
+      - Completions
+      summary: Create a text completion
+      operationId: createCompletion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompletionRequest'
+      responses:
+        '200':
+          description: Completion response
+components:
+  schemas:
+    CompletionRequest:
+      type: object
+      required:
+      - model
+      - prompt
+      properties:
+        model:
+          type: string
+        prompt:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        stream:
+          type: boolean
+        max_tokens:
+          type: integer
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API key supplied at server startup via --api-key

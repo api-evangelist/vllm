@@ -1,0 +1,71 @@
+openapi: 3.1.0
+info:
+  title: vLLM OpenAI-Compatible Server Audio Embeddings API
+  version: '1'
+  description: 'vLLM is a high-throughput open-source inference and serving engine for
+
+    LLMs. Running `vllm serve` exposes an OpenAI-compatible REST API plus
+
+    vLLM-specific endpoints. Authentication is via a server-startup
+
+    `--api-key` flag; clients supply it as a Bearer token in the
+
+    Authorization header (matching the OpenAI Python client).
+
+    '
+  contact:
+    name: vLLM Documentation
+    url: https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://{host}:{port}
+  description: Local vLLM server
+  variables:
+    host:
+      default: localhost
+    port:
+      default: '8000'
+security:
+- bearerAuth: []
+tags:
+- name: Embeddings
+  description: OpenAI-compatible embeddings
+paths:
+  /v1/embeddings:
+    post:
+      tags:
+      - Embeddings
+      summary: Create embeddings
+      operationId: createEmbedding
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmbeddingRequest'
+      responses:
+        '200':
+          description: Embedding response
+components:
+  schemas:
+    EmbeddingRequest:
+      type: object
+      required:
+      - model
+      - input
+      properties:
+        model:
+          type: string
+        input:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API key supplied at server startup via --api-key

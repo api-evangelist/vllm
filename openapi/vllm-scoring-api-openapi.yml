@@ -1,0 +1,86 @@
+openapi: 3.1.0
+info:
+  title: vLLM OpenAI-Compatible Server Audio Scoring API
+  version: '1'
+  description: 'vLLM is a high-throughput open-source inference and serving engine for
+
+    LLMs. Running `vllm serve` exposes an OpenAI-compatible REST API plus
+
+    vLLM-specific endpoints. Authentication is via a server-startup
+
+    `--api-key` flag; clients supply it as a Bearer token in the
+
+    Authorization header (matching the OpenAI Python client).
+
+    '
+  contact:
+    name: vLLM Documentation
+    url: https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://{host}:{port}
+  description: Local vLLM server
+  variables:
+    host:
+      default: localhost
+    port:
+      default: '8000'
+security:
+- bearerAuth: []
+tags:
+- name: Scoring
+  description: vLLM-specific scoring and reranking endpoints
+paths:
+  /v1/score:
+    post:
+      tags:
+      - Scoring
+      summary: Score with a cross-encoder model
+      operationId: score
+      responses:
+        '200':
+          description: Score
+  /v1/rerank:
+    post:
+      tags:
+      - Scoring
+      summary: Rerank results
+      operationId: rerank
+      responses:
+        '200':
+          description: Rerank results
+  /classify:
+    post:
+      tags:
+      - Scoring
+      summary: Classify input
+      operationId: classify
+      responses:
+        '200':
+          description: Classification
+  /pooling:
+    post:
+      tags:
+      - Scoring
+      summary: Pooling operation
+      operationId: pooling
+      responses:
+        '200':
+          description: Pooling result
+  /generative_scoring:
+    post:
+      tags:
+      - Scoring
+      summary: Score items using a generative model
+      operationId: generativeScoring
+      responses:
+        '200':
+          description: Scoring result
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API key supplied at server startup via --api-key
