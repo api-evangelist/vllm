@@ -6,7 +6,20 @@ description: >-
   vLLM is a high-throughput, memory-efficient open-source inference and serving engine for LLMs. It
   provides an OpenAI-compatible REST server (vllm serve) plus a Python API. vLLM is Apache 2.0 and run
   on your own GPU infrastructure; there is no hosted vLLM SaaS from the project itself.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/vllm.png
 tags:
   - LLM
   - Inference
@@ -18,30 +31,90 @@ created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
 apis:
-  - aid: vllm:openai-compatible
-    name: vLLM OpenAI-Compatible Server
-    description: >-
-      OpenAI-compatible REST API exposed by `vllm serve`. Endpoints include /v1/chat/completions,
-      /v1/completions, /v1/embeddings, /v1/score, /v1/audio/transcriptions, /v1/audio/translations,
-      /v1/realtime (WebSocket), /tokenize, /detokenize, and /generative_scoring. Authentication via the
-      --api-key flag set on server start; clients can use the official OpenAI Python library unmodified,
-      with vLLM-specific extensions passed via extra_body.
-    humanURL: https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html
-    baseURL: http://localhost:8000/v1
-    tags:
-      - Chat
-      - Completions
-      - Embeddings
-      - Audio
-      - Score
-      - OpenAI-Compatible
-    properties:
-      - type: Documentation
-        url: https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html
-      - type: GitHub
-        url: https://github.com/vllm-project/vllm
-      - type: OpenAICompat
-        url: https://platform.openai.com/docs/api-reference
+- aid: vllm:openai-compatible
+  name: vLLM OpenAI-Compatible Server
+  description: >-
+    OpenAI-compatible REST API exposed by `vllm serve`. Endpoints include /v1/chat/completions, /v1/completions,
+    /v1/embeddings, /v1/score, /v1/audio/transcriptions, /v1/audio/translations, /v1/realtime (WebSocket),
+    /tokenize, /detokenize, and /generative_scoring. Authentication via the --api-key flag set on server
+    start; clients can use the official OpenAI Python library unmodified, with vLLM-specific extensions
+    passed via extra_body.
+  humanURL: https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html
+  baseURL: http://localhost:8000/v1
+  tags:
+  - Chat
+  - Completions
+  - Embeddings
+  - Audio
+  - Score
+  - OpenAI-Compatible
+  properties:
+  - type: Documentation
+    url: https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html
+  - type: GitHub
+    url: https://github.com/vllm-project/vllm
+  - type: OpenAICompat
+    url: https://platform.openai.com/docs/api-reference
+- aid: vllm:vllm-audio-api
+  name: vLLM Audio API
+  description: OpenAI-compatible audio endpoints
+  humanURL: https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html
+  baseURL: http://localhost:8000/v1
+  tags:
+  - Audio
+  properties:
+  - type: OpenAPI
+    url: openapi/vllm-audio-api-openapi.yml
+- aid: vllm:vllm-chat-api
+  name: vLLM Chat API
+  description: OpenAI-compatible chat completions
+  humanURL: https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html
+  baseURL: http://localhost:8000/v1
+  tags:
+  - Chat
+  properties:
+  - type: OpenAPI
+    url: openapi/vllm-chat-api-openapi.yml
+- aid: vllm:vllm-completions-api
+  name: vLLM Completions API
+  description: OpenAI-compatible text completions
+  humanURL: https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html
+  baseURL: http://localhost:8000/v1
+  tags:
+  - Completions
+  properties:
+  - type: OpenAPI
+    url: openapi/vllm-completions-api-openapi.yml
+- aid: vllm:vllm-embeddings-api
+  name: vLLM Embeddings API
+  description: OpenAI-compatible embeddings
+  humanURL: https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html
+  baseURL: http://localhost:8000/v1
+  tags:
+  - Embeddings
+  properties:
+  - type: OpenAPI
+    url: openapi/vllm-embeddings-api-openapi.yml
+- aid: vllm:vllm-scoring-api
+  name: vLLM Scoring API
+  description: vLLM-specific scoring and reranking endpoints
+  humanURL: https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html
+  baseURL: http://localhost:8000/v1
+  tags:
+  - Scoring
+  properties:
+  - type: OpenAPI
+    url: openapi/vllm-scoring-api-openapi.yml
+- aid: vllm:vllm-tokenize-api
+  name: vLLM Tokenize API
+  description: vLLM-specific tokenize/detokenize utilities
+  humanURL: https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html
+  baseURL: http://localhost:8000/v1
+  tags:
+  - Tokenize
+  properties:
+  - type: OpenAPI
+    url: openapi/vllm-tokenize-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/vllm-agentic-access.yml
