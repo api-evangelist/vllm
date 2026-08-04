@@ -1,0 +1,24 @@
+{
+  "provider": "vllm",
+  "sources": [
+    "vllm-audio-api-openapi.yml",
+    "vllm-chat-api-openapi.yml",
+    "vllm-completions-api-openapi.yml",
+    "vllm-embeddings-api-openapi.yml",
+    "vllm-scoring-api-openapi.yml",
+    "vllm-tokenize-api-openapi.yml"
+  ],
+  "outputs": [
+    "vllm-audio-api-openapi.yml",
+    "vllm-chat-api-openapi.yml",
+    "vllm-completions-api-openapi.yml",
+    "vllm-embeddings-api-openapi.yml",
+    "vllm-scoring-api-openapi.yml",
+    "vllm-tokenize-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
