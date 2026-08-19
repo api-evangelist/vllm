@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "vLLM OpenAI-Compatible Server Audio Scoring API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Scoring",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Score with a cross-encoder model",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/v1/score"
+          },
+          "docs": "Score with a cross-encoder model"
+        },
+        {
+          "info": {
+            "name": "Rerank results",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/v1/rerank"
+          },
+          "docs": "Rerank results"
+        },
+        {
+          "info": {
+            "name": "Classify input",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/classify"
+          },
+          "docs": "Classify input"
+        },
+        {
+          "info": {
+            "name": "Pooling operation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/pooling"
+          },
+          "docs": "Pooling operation"
+        },
+        {
+          "info": {
+            "name": "Score items using a generative model",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/generative_scoring"
+          },
+          "docs": "Score items using a generative model"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
