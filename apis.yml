@@ -23,6 +23,13 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/vllm.png
 tags:
   - LLM
   - Inference
+  - Open-Source
+  - GPU
+  - OpenAI-Compatible
+  - Self-Hosted
+tags_raw:
+  - LLM
+  - Inference
   - Open Source
   - GPU
   - OpenAI Compatible
