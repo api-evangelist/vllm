@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: vLLM OpenAI-Compatible Server Audio Completions API
+  title: vLLM OpenAI-Compatible Server Completions API
   version: '1'
   description: 'vLLM is a high-throughput open-source inference and serving engine for
 
@@ -10,9 +10,7 @@ info:
 
     `--api-key` flag; clients supply it as a Bearer token in the
 
-    Authorization header (matching the OpenAI Python client).
-
-    '
+    Authorization header (matching the OpenAI Python client).'
   contact:
     name: vLLM Documentation
     url: https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html

@@ -1,12 +1,7 @@
 {
   "provider": "vllm",
   "sources": [
-    "vllm-audio-api-openapi.yml",
-    "vllm-chat-api-openapi.yml",
-    "vllm-completions-api-openapi.yml",
-    "vllm-embeddings-api-openapi.yml",
-    "vllm-scoring-api-openapi.yml",
-    "vllm-tokenize-api-openapi.yml"
+    "_original/vllm-openapi.yml"
   ],
   "outputs": [
     "vllm-audio-api-openapi.yml",
@@ -19,6 +14,17 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "vllm-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "vllm-audio-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vllm-chat-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vllm-completions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vllm-embeddings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vllm-scoring-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vllm-tokenize-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
