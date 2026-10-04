@@ -93,16 +93,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/vllm-audio-api-openapi.yml
-- aid: vllm:vllm-chat-api
-  name: vLLM Chat API
-  description: OpenAI-compatible chat completions
-  humanURL: https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html
-  baseURL: http://localhost:8000/v1
-  tags:
-  - Chat
-  properties:
-  - type: OpenAPI
-    url: openapi/vllm-chat-api-openapi.yml
 - aid: vllm:vllm-completions-api
   name: vLLM Completions API
   description: OpenAI-compatible text completions
@@ -143,6 +133,16 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/vllm-tokenize-api-openapi.yml
+- aid: vllm:vllm-chat-completions-api
+  name: vLLM Chat Completions API
+  description: OpenAI-compatible chat completions
+  humanURL: https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html
+  baseURL: http://localhost:8000/v1
+  tags:
+  - Chat Completions
+  properties:
+  - type: OpenAPI
+    url: openapi/vllm-chat-completions-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/vllm-agentic-access.yml
