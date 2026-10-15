@@ -17,6 +17,26 @@ edges:
     detected: '2026-10-13'
   detected_by: sweep-model-routing.py
   first_seen: '2026-10-13'
+- partner_name: LlamaIndex
+  partner: llamaindex
+  partner_match: framework
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/run-llama/llama_index/tree/main/llama-index-integrations/embeddings/llama-index-embeddings-vllm
+  coverage_role:
+  - embeddings
+  framework_signals:
+    packages:
+    - llama-index-embeddings-vllm
+    roles:
+    - embeddings
+    vendor_domain: vllm.ai
+  matched_by: verified-domain-table
+  detected_by: sweep-rag-vector.py
+  first_seen: '2026-10-15'
 generated: '2026-10-13'
 method: searched
-checked: []
+checked:
+- https://github.com/run-llama/llama_index/tree/main/llama-index-integrations
