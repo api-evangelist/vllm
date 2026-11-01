@@ -1,4 +1,4 @@
-# vLLM (vllm)
+# vLLM
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,60 +66,125 @@
 
 vLLM is a high-throughput, memory-efficient open-source inference and serving engine for LLMs. It provides an OpenAI-compatible REST server (vllm serve) plus a Python API. vLLM is Apache 2.0 and run on your own GPU infrastructure; there is no hosted vLLM SaaS from the project itself.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/vllm/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/vllm/refs/heads/main/apis.yml)
+**Areas:** LLM · Inference · Open Source · GPU · OpenAI-Compatible · Self-Hosted
 
-## Tags
+## vLLM on APIs.io
 
-- LLM
-- Inference
-- Open Source
-- GPU
-- OpenAI Compatible
-- Self-Hosted
+Everything profiled for vLLM is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/vllm/](https://apis.io/providers/vllm/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (7)
 
-- **Created:** 2026-05-08
-- **Modified:** 2026-05-08
+- [vLLM OpenAI-Compatible Server](https://apis.io/apis/vllm/openai-compatible/) — OpenAI-compatible REST API exposed by `vllm serve`. Endpoints include /v1/chat/completions, /v1/completions, /v1/embeddings, /v1/score,…
+- [vLLM Audio API](https://apis.io/apis/vllm/vllm-audio-api/) — OpenAI-compatible audio endpoints
+- [vLLM Completions API](https://apis.io/apis/vllm/vllm-completions-api/) — OpenAI-compatible text completions
+- [vLLM Embeddings API](https://apis.io/apis/vllm/vllm-embeddings-api/) — OpenAI-compatible embeddings
+- [vLLM Scoring API](https://apis.io/apis/vllm/vllm-scoring-api/) — vLLM-specific scoring and reranking endpoints
+- [vLLM Tokenize API](https://apis.io/apis/vllm/vllm-tokenize-api/) — vLLM-specific tokenize/detokenize utilities
+- [vLLM Chat Completions API](https://apis.io/apis/vllm/vllm-chat-completions-api/) — OpenAI-compatible chat completions
 
-## APIs
+### Published properties
 
-### vLLM OpenAI-Compatible Server
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-OpenAI-compatible REST API exposed by `vllm serve`. Endpoints include /v1/chat/completions, /v1/completions, /v1/embeddings, /v1/score, /v1/audio/transcriptions, /v1/audio/translations, /v1/realtime (WebSocket), /tokenize, /detokenize, and /generative_scoring. Authentication via the --api-key flag set on server start; clients can use the official OpenAI Python library unmodified, with vLLM-specific extensions passed via extra_body.
+#### Agentic access (1)
 
-- **Human URL:** [https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html](https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html)
-- **Base URL:** `http://localhost:8000/v1`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Vllm Agentic Access](https://apis.io/agentic-access/vllm/vllm-agentic-access/)
 
-- Chat
-- Completions
-- Embeddings
-- Audio
-- Score
-- OpenAI-Compatible
+#### Collections (7)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html)
-- [Git Hub](https://github.com/vllm-project/vllm)
-- [Open A I Compat](https://platform.openai.com/docs/api-reference)
-- [Postman Collection](collections/vllm.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vllm.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [vLLM OpenAI-Compatible Server](https://apis.io/collections/vllm/open-vllm/)
+- [vLLM OpenAI-Compatible Server Audio API](https://apis.io/collections/vllm/open-vllm-audio-api/)
+- [vLLM OpenAI-Compatible Server Audio Chat API](https://apis.io/collections/vllm/open-vllm-chat-api/)
+- [vLLM OpenAI-Compatible Server Audio Completions API](https://apis.io/collections/vllm/open-vllm-completions-api/)
+- [vLLM OpenAI-Compatible Server Audio Embeddings API](https://apis.io/collections/vllm/open-vllm-embeddings-api/)
+- [vLLM OpenAI-Compatible Server Audio Scoring API](https://apis.io/collections/vllm/open-vllm-scoring-api/)
+- [vLLM OpenAI-Compatible Server Audio Tokenize API](https://apis.io/collections/vllm/open-vllm-tokenize-api/)
 
-## Common Properties
+#### Security (2)
 
-- [LinkedIn](https://www.linkedin.com/company/vllm-project)
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Vllm Authentication](https://apis.io/security/vllm/vllm-authentication/)
+- [Vllm Domain Security](https://apis.io/security/vllm/vllm-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Vllm Plans Pricing](https://apis.io/plans/vllm/vllm-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Vllm Rate Limits](https://apis.io/rate-limits/vllm/vllm-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Vllm Finops](https://apis.io/finops/vllm/vllm-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://docs.vllm.ai/)
-- [Developer Portal](https://docs.vllm.ai/)
-- [Open Source](https://github.com/vllm-project/vllm)
-- [Plans](plans/vllm-plans-pricing.yml)
-- [Rate Limits](rate-limits/vllm-rate-limits.yml)
-- [Fin Ops](finops/vllm-finops.yml)
-- [L L Ms Txt](https://vllm.ai/llms.txt)
+- [Blog](https://vllm.ai/blog/rss.xml)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 24.7** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 42.2 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 33.3 |
+| Access clarity | 5.3 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 10.9** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/vllm/](https://apis.io/providers/vllm/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for vLLM: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/vllm/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
